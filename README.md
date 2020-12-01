@@ -17,6 +17,7 @@
 
 ## Features
 
+- Create a mongo db with name flip-room
 - Create Move-out-entry
 - Get all move-out-list
 - Update a move-out entry by increasing the room number by 1
