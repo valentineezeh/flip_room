@@ -1,6 +1,6 @@
 const Router = require('express').Router;
 const createMoveOutEntry = require('../handlers/createMoveOutEntry');
-const createRoomValidator = require('../validators/createRoom');
+const createMoveOutEntryValidator = require('../validators/createMoveOutEntry');
 const getAllMoveOutList = require('../handlers/getMoveOutList');
 const updateMoveOutList = require('../handlers/updateMoveOutList');
 
@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
 });
 
   // create room endpoint
-  router.post('/move-out-entry', createRoomValidator, createMoveOutEntry(db));
+  router.post('/move-out-entry', createMoveOutEntryValidator, createMoveOutEntry(db));
 
   // increment the number of room when updating
   router.put('/move-out/:id', updateMoveOutList(db))
