@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import getRoomReducer from './rooms';
+import getMoveOutListReducer from './moveOut';
 
 export default combineReducers({
-  getRoomReducer
+  getMoveOutListReducer
 })

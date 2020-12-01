@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, connect } from 'react-redux';
 import TableRow from './TableRow';
-import { getAllRooms } from '../store/action/rooms';
+import { getAllMoveOutList } from '../store/action/moveOut';
 import Loader from 'react-loader-spinner';
 
 const Table = (props) => {
@@ -13,10 +13,10 @@ const Table = (props) => {
     // code to run on component mount
     
     // dispatch getRoom method on component did mount
-    dispatch(getAllRooms());
+    dispatch(getAllMoveOutList());
   }, [dispatch]);
 
-  let { roomsData, isLoading } = props;
+  let { moveOutData, isLoading } = props;
 
   return (
     <>
@@ -47,7 +47,7 @@ const Table = (props) => {
             </div>
           ) : (
             <TableRow 
-            roomsData={roomsData} 
+            moveOutData={moveOutData} 
             isLoading={isLoading}
             />
           )
@@ -64,8 +64,8 @@ Table.propTypes = {
 }
 
 const mapStateToProps = state => ({
-  isLoading: state.getRoomReducer.isLoading,
-  roomsData: state.getRoomReducer.rooms,
+  isLoading: state.getMoveOutListReducer.isLoading,
+  moveOutData: state.getMoveOutListReducer.rooms,
 })
 
 export default connect(mapStateToProps, null)(Table);

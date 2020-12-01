@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { addCommasToMoney } from '../services/utils';
-import { flipRoomRequest } from '../store/action/rooms'
+import { flipRoomRequest } from '../store/action/moveOut'
 
 const TableRow = (props) => {
-  const { roomsData } = props;
+  const { moveOutData } = props;
   const dispatch = useDispatch();
 
   const onFlipRoom = (id) => {
@@ -15,7 +15,7 @@ const TableRow = (props) => {
   return (
     <>
       {
-        roomsData.map(item => (
+        moveOutData.map(item => (
           <tr key={item._id} className="table_row">
             <th scope="row">{item.moveOutDate}</th>
             <td>{item._id.substring(0, 7)}</td>
@@ -47,7 +47,7 @@ const TableRow = (props) => {
 }
 
 TableRow.propTypes = {
-  roomsData: PropTypes.array
+  moveOutData: PropTypes.array
 }
 
 export default TableRow;

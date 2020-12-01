@@ -2,28 +2,28 @@ import toastr from 'toastr';
 import { axios, _catchAxiosError } from '../../services/axios';
 import { BASE_URL } from '../../services/config';
 import {
-  GET_ALL_ROOMS,
-  GET_ALL_ROOMS_IS_LOADING,
+  GET_ALL_MOVE_OUT_LIST,
+  GET_ALL_MOVE_OUT_LIST_IS_LOADING,
 } from './types';
 
-const getRooms = roomsData => ({
-  type: GET_ALL_ROOMS,
-  roomsData
+const getMoveOutList = moveOutData => ({
+  type: GET_ALL_MOVE_OUT_LIST,
+  moveOutData
 });
 
-const getRoomsIsLoading = () => ({
-  type: GET_ALL_ROOMS_IS_LOADING
+const getMoveOutListIsLoading = () => ({
+  type: GET_ALL_MOVE_OUT_LIST_IS_LOADING
 });
 
-export const getAllRooms = (onError = false) => async dispatch => {
+export const getAllMoveOutList = (onError = false) => async dispatch => {
   try {
-    dispatch(getRoomsIsLoading());
+    dispatch(getMoveOutListIsLoading());
     const response = await axios({
       method: 'get',
-      url: `${BASE_URL}/rooms`
+      url: `${BASE_URL}/move-out-list`
     });
     const { data } = response.data;
-    dispatch(getRooms(data));
+    dispatch(getMoveOutList(data));
   } catch(error) {
     const reportError = await _catchAxiosError(error, onError);
     toastr.error(reportError);
@@ -35,10 +35,10 @@ export const flipRoomRequest = (id, onError = false) => async dispatch => {
   try {
     const response = await axios({
       method: 'put',
-      url: `${BASE_URL}/room/${id}`,
+      url: `${BASE_URL}/move-out/${id}`,
     })
     const { message } = response.data;
-    dispatch(getAllRooms())
+    dispatch(getAllMoveOutList())
     toastr.success(message)
   } catch(error) {
     const reportError = await _catchAxiosError(error, onError);
