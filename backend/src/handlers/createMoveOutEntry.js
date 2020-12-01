@@ -27,12 +27,12 @@ module.exports = (db) => {
         moveOutDate: moveOutDate
       }
       // Save data to the database
-      const createRoom = await db.collection('rooms').insertOne(data);
+      const createMoveOutEntry = await db.collection('rooms').insertOne(data);
 
       // If successful send a response to the user
       response.status(201).json({
         message: 'Room was successfully created',
-        data: createRoom.ops[0]
+        data: createMoveOutEntry.ops[0]
       })
     } catch (error) {
       // Catch and throw error that occurs

@@ -5,7 +5,7 @@ module.exports = (db) => {
       const { id } = request.params;
 
       // Find and update the room by increasing the room number by 1 and adding a new column 'updateAt date' to the table
-      const updateRoom = await db.collection('rooms').findOneAndUpdate(
+      const updateMoveOutList = await db.collection('rooms').findOneAndUpdate(
         {_id: id},
         {
           $inc: {'room': 1},
@@ -15,14 +15,14 @@ module.exports = (db) => {
       );
 
       // if no room is found throw this error that room does not exist
-      if (!updateRoom.value) return response.status(404).json({
+      if (!updateMoveOutList.value) return response.status(404).json({
         message: 'Room does not exist'
       });
 
       // if everything goes as plan throw a success message and the updated payload
       response.status(200).json({
         message: 'Room update was successful.',
-        data: updateRoom.value
+        data: updateMoveOutList.value
       })
     } catch (error) {
       // Catch errors

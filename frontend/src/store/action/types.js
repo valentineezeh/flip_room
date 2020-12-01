@@ -1,0 +1,3 @@
+// Get all rooms
+export const GET_ALL_MOVE_OUT_LIST = 'GET_ALL_MOVE_OUT_LIST';
+export const GET_ALL_MOVE_OUT_LIST_IS_LOADING = 'GET_ALL_MOVE_OUT_LIST_IS_LOADING';
