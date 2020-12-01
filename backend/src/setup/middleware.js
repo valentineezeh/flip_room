@@ -6,7 +6,5 @@ module.exports = (app) => {
   app.use(BodyParser.json());
 
   // only localhost:4000 can make request to this api
-  app.use(Cors({
-    origin: ['http://localhost:4000']
-  }))
+  app.use(Cors())
 }
